@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_list"
+    tools:context=".Login">
+
+    <ImageView
+        android:id="@+id/branding"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/dcplogo" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/branding"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="50dp"
+        android:scrollbars="none"
+        android:layout_marginRight="50dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+
+            <com.github.florent37.materialtextfield.MaterialTextField
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:mtf_image="@drawable/email"
+                android:layout_marginBottom="10dp"
+                app:mtf_labelColor="#fff">
+
+                <EditText
+                    android:id="@+id/email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#fff"
+                    android:hint="@string/hint_email"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="15sp" />
+
+            </com.github.florent37.materialtextfield.MaterialTextField>
+
+
+            <com.github.florent37.materialtextfield.MaterialTextField
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:mtf_image="@drawable/password"
+                android:layout_marginBottom="10dp"
+                app:mtf_labelColor="#fff">
+
+                <EditText
+                    android:id="@+id/password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#fff"
+                    android:hint="@string/hint_password"
+                    android:inputType="textPassword"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="15sp" />
+
+            </com.github.florent37.materialtextfield.MaterialTextField>
+
+            <CheckBox
+                android:id="@+id/checkbox"
+                android:layout_gravity="left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/showpassword"
+                android:buttonTint="@color/colorPrimary"
+                android:outlineSpotShadowColor="@color/colorPrimary"
+                android:textColor="@color/colorPrimary"/>
+
+
+            <com.marozzi.roundbutton.RoundButton
+                android:id="@+id/loginBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="25dp"
+                android:text="@string/btn_login_value"
+                app:rb_animation_alpha="true"
+                app:rb_animation_corner_radius="20dp"
+                app:rb_animation_duration="500"
+                app:rb_animation_inner_resource_color="@color/orange_dark"
+                app:rb_animation_progress_color="@color/colorPrimary"
+                app:rb_animation_progress_padding="3dp"
+                app:rb_animation_progress_style="dots"
+                app:rb_animation_progress_width="2dp"
+                app:rb_background_color="@android:color/transparent"
+                app:rb_background_color_pressed="@color/colorPrimary"
+                app:rb_corner_color="@color/colorPrimary"
+                app:rb_corner_color_pressed="@color/colorPrimary"
+                app:rb_corner_radius="20dp"
+                app:rb_corner_width="1dp"
+                app:rb_text_color="@color/colorPrimary"
+                app:rb_text_color_pressed="@android:color/white" />
+
+            <TextView
+                android:id="@+id/registerTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/link_to_register"
+                android:textColor="@color/colorPrimary" />
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

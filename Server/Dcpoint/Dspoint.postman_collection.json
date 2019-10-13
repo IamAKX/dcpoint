@@ -1,0 +1,305 @@
+{
+	"info": {
+		"_postman_id": "07e0c109-1675-429f-a0b7-33b49019fe2c",
+		"name": "Dspoint",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\":\"akx.sonu@gmail.com\",\n\t\"name\":\"Akash Giri\",\n\t\"password\":\"akash123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}userFunction/v1/user/register",
+							"host": [
+								"{{url}}userFunction"
+							],
+							"path": [
+								"v1",
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\" : \"akx.sonu@gmail.com\",\n\t\"password\" : \"akash123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}userFunction/v1/user/login",
+							"host": [
+								"{{url}}userFunction"
+							],
+							"path": [
+								"v1",
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\":\"akx.sonu@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}userFunction/v1/user/delete",
+							"host": [
+								"{{url}}userFunction"
+							],
+							"path": [
+								"v1",
+								"user",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "records",
+			"item": [
+				{
+					"name": "Add/Update",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\" : \"Akash Giri\",\n\t\"email\" : \"akx.sonu@gmail.com\",\n\t\"kfz_number\" : \"xyz\",\n\t\"tour_number\" : \"123\",\n\t\"start_time\" : \"07:30:00\",\n\t\"end_time\" : \"15:40:00\",\n\t\"break_start_time\" : \"12:00:00\",\n\t\"break_end_time\" : \"13:00:00\",\n\t\"break_hours\" : \"1:00:00\",\n\t\"working_hours\" : \"7:10:00\",\n\t\"total_hours\" : \"8:10:00\",\n\t\"welle\" : \"4\",\n\t\"recordDate\" : \"10-02-2019\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}recordFunction/v1/record/add",
+							"host": [
+								"{{url}}recordFunction"
+							],
+							"path": [
+								"v1",
+								"record",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View Single record",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\" : \"akx.sonu@gmail.com\",\n\t\"recordDate\" : \"10-02-2019\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}recordFunction/v1/record/view",
+							"host": [
+								"{{url}}recordFunction"
+							],
+							"path": [
+								"v1",
+								"record",
+								"view"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View All Records",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}recordFunction/v1/record/viewAll",
+							"host": [
+								"{{url}}recordFunction"
+							],
+							"path": [
+								"v1",
+								"record",
+								"viewAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Query Records",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\":\"akx.sonu@gmail.com\",\n\t\"start_date\":\"\",\n\t\"end_date\":\"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}recordFunction/v1/record/query",
+							"host": [
+								"{{url}}recordFunction"
+							],
+							"path": [
+								"v1",
+								"record",
+								"query"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Record",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\" : \"akx.sonu@gmail.com\",\n\t\"recordDate\" : \"10-02-2019\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}recordFunction/v1/record/delete",
+							"host": [
+								"{{url}}recordFunction"
+							],
+							"path": [
+								"v1",
+								"record",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Monthly stats",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}recordFunction/v1/record/monthlyStats",
+							"host": [
+								"{{url}}recordFunction"
+							],
+							"path": [
+								"v1",
+								"record",
+								"monthlyStats"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

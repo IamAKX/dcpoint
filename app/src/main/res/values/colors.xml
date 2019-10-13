@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#ffffff</color>
+    <color name="colorPrimaryDark">#ffffff</color>
+    <color name="colorAccent">#252628</color>
+
+    <color name="orange_dark">#D26A32</color>
+    <color name="orange_light">#FFA152</color>
+
+    <color name="bubble_start_time">#69C1AE</color>
+    <color name="bubble_break_end_time">#FDAB20</color>
+    <color name="bubble_break_start_time">#7145B3</color>
+    <color name="bubble_end_time">#E12B73</color>
+
+</resources>

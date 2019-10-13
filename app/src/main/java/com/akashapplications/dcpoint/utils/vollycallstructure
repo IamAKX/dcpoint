@@ -1,0 +1,36 @@
+JSONObject params = new JSONObject();
+            try {
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, API.REGISTER, params,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+
+                            Log.i("checking", response.toString());
+
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    NetworkResponse networkResponse = error.networkResponse;
+
+
+                }
+            });
+
+            jsonObjectRequest.setShouldCache(false);
+            jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(
+                    0,
+                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+            ));
+            RequestQueue requestQueue = RequestQueueSingleton.getInstance(getBaseContext())
+                    .getRequestQueue();
+            requestQueue.getCache().clear();
+            requestQueue.add(jsonObjectRequest);
+            return null;

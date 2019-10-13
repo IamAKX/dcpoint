@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "447690506595",
+    "firebase_url": "https://dcpoint.firebaseio.com",
+    "project_id": "dcpoint",
+    "storage_bucket": "dcpoint.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:447690506595:android:3fee64332cf7eb72d41356",
+        "android_client_info": {
+          "package_name": "com.akashapplications.dcpoint"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "447690506595-7qvffg8t1j7dp0ntg6a33g7bcukedf6m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHOi1xnkkqe8qlYGWCB2cF0SabP7dQrlw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "447690506595-7qvffg8t1j7dp0ntg6a33g7bcukedf6m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

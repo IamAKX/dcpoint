@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimaryDark"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingLeft="20dp"
+    android:paddingRight="2dp">
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:background="#EAEBF3" />
+
+        <ImageView
+            android:id="@+id/startBreakTimeCheck"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/circle_notdone" />
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:background="#EAEBF3" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:text="__:__"
+        android:id="@+id/startBreakTime"
+        android:textColor="#B3B3C1"
+        android:textSize="16sp" />
+
+    <com.daasuu.bl.BubbleLayout
+        android:id="@+id/startBreakTimeBubble"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:padding="8dp"
+        app:bl_arrowDirection="left"
+        app:bl_arrowHeight="8dp"
+        app:bl_arrowPosition="30dp"
+        app:bl_arrowWidth="8dp"
+        app:bl_bubbleColor="@color/bubble_break_start_time"
+        app:bl_strokeColor="@color/bubble_break_start_time"
+        app:bl_cornersRadius="12dp"
+        app:bl_strokeWidth="1dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:textColor="#fff"
+                android:text="@string/text_break_time_start"
+                android:textSize="18sp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#fff"
+                android:paddingBottom="5dp"
+                android:text="@string/btn_update_time"
+                android:textSize="14dp" />
+
+        </LinearLayout>
+    </com.daasuu.bl.BubbleLayout>
+</LinearLayout>

@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    android:orientation="vertical"
+    tools:context=".Home">
+
+    <RelativeLayout
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_centerVertical="true"
+            android:id="@+id/logout"
+            android:layout_alignParentLeft="true"
+            android:layout_margin="20dp"
+            android:layout_width="25dp"
+            android:tint="#979CAA"
+            android:layout_height="25dp"
+            android:src="@drawable/logout"/>
+
+        <TextView
+            android:layout_centerVertical="true"
+            android:padding="10dp"
+            android:textColor="#979CAA"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:text="@string/report_title_text"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"/>
+
+        <ImageView
+            android:layout_centerVertical="true"
+            android:id="@+id/translate"
+            android:layout_alignParentRight="true"
+            android:layout_margin="20dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:tint="#979CAA"
+            android:src="@drawable/translation"/>
+
+
+
+    </RelativeLayout>
+
+
+    <devs.mulham.horizontalcalendar.HorizontalCalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:textColorNormal="#B4B9C3"
+        android:background="#F0F1F4"
+        app:textColorSelected="#FFFF"
+        android:visibility="gone"
+        app:selectorColor="@android:color/transparent"
+        app:selectedDateBackground="@drawable/selected_date_background"/>
+
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/dayOfWeek"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Monday"
+            android:textColor="@color/colorAccent"
+            android:textStyle="bold"
+            android:layout_marginRight="10dp"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/currentDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="28 August, 2017"
+            android:textColor="#BCBFC8"
+            android:textSize="14sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+        <EditText
+            android:id="@+id/kfzNumber"
+            android:hint="@string/hint_carno"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:singleLine="true"
+            android:background="@drawable/bordered_background"/>
+
+        <EditText
+            android:id="@+id/tourNumber"
+            android:hint="@string/hint_tour"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:singleLine="true"
+            android:background="@drawable/bordered_background"/>
+
+        <EditText
+            android:id="@+id/scannernumber"
+            android:hint="@string/hint_scanner"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:singleLine="true"
+            android:inputType="phone"
+            android:background="@drawable/bordered_background"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+        <EditText
+            android:id="@+id/startKM"
+            android:hint="@string/hint_StartKM"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:singleLine="true"
+            android:inputType="numberDecimal"
+            android:background="@drawable/bordered_background"/>
+
+        <EditText
+            android:id="@+id/endKM"
+            android:hint="@string/hint_endKM"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:singleLine="true"
+            android:inputType="numberDecimal"
+            android:background="@drawable/bordered_background"/>
+
+        <TextView
+            android:id="@+id/totalKM"
+            android:hint="@string/totalKM"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:singleLine="true"
+            android:background="@drawable/bordered_background"/>
+    </LinearLayout>
+
+        <LinearLayout
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="26dp"
+        android:paddingBottom="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welle Number"/>
+
+        <Spinner
+            android:id="@+id/welle_spinner"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"/>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+        <LinearLayout
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include layout="@layout/card_start_time"/>
+            <include layout="@layout/card_start_break_time"
+                android:visibility="gone"/>
+            <include layout="@layout/card_end_break_time"
+                android:visibility="gone"/>
+            <include layout="@layout/card_end_time"/>
+
+
+            <com.marozzi.roundbutton.RoundButton
+                android:id="@+id/updateBtn"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_margin="25dp"
+                android:text="@string/btn_update_record"
+                app:rb_background_color_disabled="#FF9800"
+                app:rb_animation_alpha="true"
+                app:rb_animation_corner_radius="100dp"
+                app:rb_animation_duration="500"
+                app:rb_animation_inner_resource_color="#FF9800"
+                app:rb_animation_progress_color="#FF9800"
+                app:rb_animation_progress_padding="3dp"
+                app:rb_animation_progress_style="dots"
+                app:rb_animation_progress_width="2dp"
+                app:rb_background_color="#FF9800"
+                app:rb_background_color_pressed="#32FF9800"
+                app:rb_corner_color="#FF9800"
+                app:rb_corner_color_pressed="#FF9800"
+                app:rb_corner_radius="100dp"
+                app:rb_corner_width="1dp"
+                app:rb_text_color="@color/colorPrimary"
+                app:rb_text_color_pressed="@color/colorPrimary" />
+
+            <TextView
+                android:padding="16dp"
+                android:id="@+id/worktimeLog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

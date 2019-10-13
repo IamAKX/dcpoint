@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Report</title>
+
+		<link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+		<link
+			rel="stylesheet"
+			href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+		/>
+
+		<script
+			type="text/javascript"
+			src="vendor/jquery/jquery-3.2.1.min.js"
+		></script>
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css"
+		/>
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="https://cdn.datatables.net/buttons/1.6.0/css/buttons.dataTables.min.css"
+		/>
+
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+		<script
+			type="text/javascript"
+			charset="utf8"
+			src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"
+		></script>
+
+		<!-- <script
+			type="text/javascript"
+			charset="utf8"
+			src="https://cdn.datatables.net/plug-ins/1.10.20/filtering/row-based/range_dates.js"
+		></script> -->
+
+		<script
+			type="text/javascript"
+			charset="utf8"
+			src="https://cdn.datatables.net/buttons/1.6.0/js/dataTables.buttons.min.js"
+		></script>
+		<script
+			type="text/javascript"
+			charset="utf8"
+			src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"
+		></script>
+		<script
+			type="text/javascript"
+			charset="utf8"
+			src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"
+		></script>
+		<script
+			type="text/javascript"
+			charset="utf8"
+			src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"
+		></script>
+		<script
+			type="text/javascript"
+			charset="utf8"
+			src="https://cdn.datatables.net/buttons/1.6.0/js/buttons.html5.min.js"
+		></script>
+
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"
+		/>
+
+		<style type="text/css">
+			@import "https://fonts.googleapis.com/css?family=Montserrat:400,700|Raleway:300,400";
+
+			.loading {
+				height: 0;
+				width: 0;
+				padding: 15px;
+				border: 6px solid #ccc;
+				border-right-color: #d26a32;
+				border-radius: 22px;
+				-webkit-animation: rotate 1s infinite linear;
+				/* left, top and position just for the demo! */
+				position: absolute;
+				left: 50%;
+				top: 50%;
+			}
+
+			@-webkit-keyframes rotate {
+				/* 100% keyframe for  clockwise. 
+     use 0% instead for anticlockwise */
+				100% {
+					-webkit-transform: rotate(360deg);
+				}
+			}
+			/* colors */
+			/* tab setting */
+			/* breakpoints */
+			/* selectors relative to radio inputs */
+			html {
+				width: 100%;
+				height: 100%;
+			}
+
+			body {
+				background: #efefef;
+				color: #333;
+				/* font-family: "Raleway"; */
+				height: 100%;
+			}
+			body h1 {
+				text-align: center;
+				color: #d26a32;
+				font-weight: 300;
+				padding: 40px 0 20px 0;
+				margin: 0;
+			}
+
+			.tabs {
+				left: 50%;
+				-webkit-transform: translateX(-50%);
+				transform: translateX(-50%);
+				position: relative;
+				background: white;
+				padding: 50px;
+				padding-bottom: 80px;
+				width: 100%;
+				/* height: 250px; */
+				box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+					0 10px 10px rgba(0, 0, 0, 0.22);
+				border-radius: 5px;
+				min-width: 240px;
+			}
+			.tabs input[name="tab-control"] {
+				display: none;
+			}
+			.tabs .content section h2,
+			.tabs ul li label {
+				font-family: "Montserrat";
+				font-weight: bold;
+				font-size: 18px;
+				color: #d26a32;
+			}
+			.tabs ul {
+				list-style-type: none;
+				padding-left: 0;
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-box-orient: horizontal;
+				-webkit-box-direction: normal;
+				-ms-flex-direction: row;
+				flex-direction: row;
+				margin-bottom: 10px;
+				-webkit-box-pack: justify;
+				-ms-flex-pack: justify;
+				justify-content: space-between;
+				-webkit-box-align: end;
+				-ms-flex-align: end;
+				align-items: flex-end;
+				-ms-flex-wrap: wrap;
+				flex-wrap: wrap;
+			}
+			.tabs ul li {
+				box-sizing: border-box;
+				-webkit-box-flex: 1;
+				-ms-flex: 1;
+				flex: 1;
+				width: 50%;
+				padding: 0 10px;
+				text-align: center;
+			}
+			.tabs ul li label {
+				-webkit-transition: all 0.3s ease-in-out;
+				transition: all 0.3s ease-in-out;
+				color: #929daf;
+				padding: 5px auto;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				display: block;
+				cursor: pointer;
+				-webkit-transition: all 0.2s ease-in-out;
+				transition: all 0.2s ease-in-out;
+				white-space: nowrap;
+				-webkit-touch-callout: none;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+			}
+			.tabs ul li label br {
+				display: none;
+			}
+			.tabs ul li label svg {
+				fill: #929daf;
+				height: 1.2em;
+				vertical-align: bottom;
+				margin-right: 0.2em;
+				-webkit-transition: all 0.2s ease-in-out;
+				transition: all 0.2s ease-in-out;
+			}
+			.tabs ul li label:hover,
+			.tabs ul li label:focus,
+			.tabs ul li label:active {
+				outline: 0;
+				color: #bec5cf;
+			}
+			.tabs ul li label:hover svg,
+			.tabs ul li label:focus svg,
+			.tabs ul li label:active svg {
+				fill: #bec5cf;
+			}
+			.tabs .slider {
+				position: relative;
+				width: 50%;
+				-webkit-transition: all 0.33s cubic-bezier(0.38, 0.8, 0.32, 1.07);
+				transition: all 0.33s cubic-bezier(0.38, 0.8, 0.32, 1.07);
+			}
+			.tabs .slider .indicator {
+				position: relative;
+				width: 50px;
+				max-width: 100%;
+				margin: 0 auto;
+				height: 4px;
+				background: #d26a32;
+				border-radius: 1px;
+			}
+			.tabs .content {
+				margin-top: 30px;
+			}
+			.tabs .content section {
+				display: none;
+				-webkit-animation-name: content;
+				animation-name: content;
+				-webkit-animation-direction: normal;
+				animation-direction: normal;
+				-webkit-animation-duration: 0.3s;
+				animation-duration: 0.3s;
+				-webkit-animation-timing-function: ease-in-out;
+				animation-timing-function: ease-in-out;
+				-webkit-animation-iteration-count: 1;
+				animation-iteration-count: 1;
+				line-height: 1.4;
+			}
+			.tabs .content section h2 {
+				color: #d26a32;
+				display: none;
+			}
+			.tabs .content section h2::after {
+				content: "";
+				position: relative;
+				display: block;
+				width: 30px;
+				height: 3px;
+				background: #d26a32;
+				margin-top: 5px;
+				left: 1px;
+			}
+			.tabs
+				input[name="tab-control"]:nth-of-type(1):checked
+				~ ul
+				> li:nth-child(1)
+				> label {
+				cursor: default;
+				color: #d26a32;
+			}
+			.tabs
+				input[name="tab-control"]:nth-of-type(1):checked
+				~ ul
+				> li:nth-child(1)
+				> label
+				svg {
+				fill: #d26a32;
+			}
+			@media (max-width: 100%) {
+				.tabs
+					input[name="tab-control"]:nth-of-type(1):checked
+					~ ul
+					> li:nth-child(1)
+					> label {
+					background: rgba(0, 0, 0, 0.08);
+				}
+			}
+			.tabs input[name="tab-control"]:nth-of-type(1):checked ~ .slider {
+				-webkit-transform: translateX(0%);
+				transform: translateX(0%);
+			}
+			.tabs
+				input[name="tab-control"]:nth-of-type(1):checked
+				~ .content
+				> section:nth-child(1) {
+				display: block;
+			}
+			.tabs
+				input[name="tab-control"]:nth-of-type(2):checked
+				~ ul
+				> li:nth-child(2)
+				> label {
+				cursor: default;
+				color: #d26a32;
+			}
+			.tabs
+				input[name="tab-control"]:nth-of-type(2):checked
+				~ ul
+				> li:nth-child(2)
+				> label
+				svg {
+				fill: #d26a32;
+			}
+			@media (max-width: 100%) {
+				.tabs
+					input[name="tab-control"]:nth-of-type(2):checked
+					~ ul
+					> li:nth-child(2)
+					> label {
+					background: rgba(0, 0, 0, 0.08);
+				}
+			}
+			.tabs input[name="tab-control"]:nth-of-type(2):checked ~ .slider {
+				-webkit-transform: translateX(100%);
+				transform: translateX(100%);
+			}
+			.tabs
+				input[name="tab-control"]:nth-of-type(2):checked
+				~ .content
+				> section:nth-child(2) {
+				display: block;
+			}
+			.tabs
+				input[name="tab-control"]:nth-of-type(3):checked
+				~ ul
+				> li:nth-child(3)
+				> label {
+				cursor: default;
+				color: #d26a32;
+			}
+			.tabs
+				input[name="tab-control"]:nth-of-type(3):checked
+				~ ul
+				> li:nth-child(3)
+				> label
+				svg {
+				fill: #d26a32;
+			}
+			@media (max-width: 100%) {
+				.tabs
+					input[name="tab-control"]:nth-of-type(3):checked
+					~ ul
+					> li:nth-child(3)
+					> label {
+					background: rgba(0, 0, 0, 0.08);
+				}
+			}
+			.tabs input[name="tab-control"]:nth-of-type(3):checked ~ .slider {
+				-webkit-transform: translateX(200%);
+				transform: translateX(200%);
+			}
+			.tabs
+				input[name="tab-control"]:nth-of-type(3):checked
+				~ .content
+				> section:nth-child(3) {
+				display: block;
+			}
+			.tabs
+				input[name="tab-control"]:nth-of-type(4):checked
+				~ ul
+				> li:nth-child(4)
+				> label {
+				cursor: default;
+				color: #d26a32;
+			}
+			.tabs
+				input[name="tab-control"]:nth-of-type(4):checked
+				~ ul
+				> li:nth-child(4)
+				> label
+				svg {
+				fill: #d26a32;
+			}
+			@media (max-width: 100%) {
+				.tabs
+					input[name="tab-control"]:nth-of-type(4):checked
+					~ ul
+					> li:nth-child(4)
+					> label {
+					background: rgba(0, 0, 0, 0.08);
+				}
+			}
+			.tabs input[name="tab-control"]:nth-of-type(4):checked ~ .slider {
+				-webkit-transform: translateX(300%);
+				transform: translateX(300%);
+			}
+			.tabs
+				input[name="tab-control"]:nth-of-type(4):checked
+				~ .content
+				> section:nth-child(4) {
+				display: block;
+			}
+			@-webkit-keyframes content {
+				from {
+					opacity: 0;
+					-webkit-transform: translateY(5%);
+					transform: translateY(5%);
+				}
+				to {
+					opacity: 1;
+					-webkit-transform: translateY(0%);
+					transform: translateY(0%);
+				}
+			}
+			@keyframes content {
+				from {
+					opacity: 0;
+					-webkit-transform: translateY(5%);
+					transform: translateY(5%);
+				}
+				to {
+					opacity: 1;
+					-webkit-transform: translateY(0%);
+					transform: translateY(0%);
+				}
+			}
+			@media (max-width: 100%) {
+				.tabs ul li label {
+					white-space: initial;
+				}
+				.tabs ul li label br {
+					display: initial;
+				}
+				.tabs ul li label svg {
+					height: 1.5em;
+				}
+			}
+			@media (max-width: 100%) {
+				.tabs ul li label {
+					padding: 5px;
+					border-radius: 5px;
+				}
+				.tabs ul li label span {
+					display: none;
+				}
+				.tabs .slider {
+					display: none;
+				}
+				.tabs .content {
+					margin-top: 20px;
+				}
+				.tabs .content section h2 {
+					display: block;
+				}
+			}
+		</style>
+
+		<script>
+			// $(window).on("unload", function(e) {
+			// 	sessionStorage.clear();
+			// });
+			$(document).ready(function() {
+				if (sessionStorage.getItem("login") == null) {
+					window.location.href = "index.html";
+					return;
+				}
+				loadReport();
+				loadUserMonthlyStats();
+			});
+
+			function loadReport() {
+				$(".loading").show();
+				$.get(
+					"https://us-central1-dcpoint.cloudfunctions.net/recordFunction/v1/record/viewAll",
+					{}
+				)
+					.done(function(data) {
+						console.log(data);
+
+						var array = data.recordList;
+						var tableValue = "";
+						for (let index = 0; index < array.length; index++) {
+							var element = array[index];
+							tableValue +=
+								"<tr>" +
+								"<td>" +
+								element.recordDate +
+								"</td>" +
+								"<td>" +
+								element.name +
+								"</td>" +
+								"<td>" +
+								element.email +
+								"</td>" +
+								"<td>" +
+								element.welle +
+								"</td>" +
+								"<td>" +
+								element.kfz_number +
+								"</td>" +
+								"<td>" +
+								element.tour_number +
+								"</td>" +
+								"<td>" +
+								element.scanner_number +
+								"</td>" +
+								"<td>" +
+								element.start_time +
+								"</td>" +
+								"<td>" +
+								element.break_start_time +
+								"</td>" +
+								"<td>" +
+								element.break_end_time +
+								"</td>" +
+								"<td>" +
+								element.end_time +
+								"</td>" +
+								"<td>" +
+								element.working_hours +
+								"</td>" +
+								"<td>" +
+								element.break_hours +
+								"</td>" +
+								"<td>" +
+								element.total_hours +
+								"</td>" +
+								"<td>" +
+								element.start_km +
+								"</td>" +
+								"<td>" +
+								element.end_km +
+								"</td>" +
+								"<td>" +
+								element.total_km +
+								"</td>" +
+								"</tr>";
+						}
+
+						$("#reportTable")
+							.find("tbody")
+							.append(tableValue);
+
+						$.fn.dataTableExt.afnFiltering.push(function(
+							oSettings,
+							aData,
+							iDataIndex
+						) {
+							if ($("#dateStart").val() == "" || $("#dateEnd").val() == "")
+								return true;
+							var dateStart = parseDateValue($("#dateStart").val());
+							var dateEnd = parseDateValue($("#dateEnd").val());
+
+							// aData represents the table structure as an array of columns, so the script access the date value
+							// in the first column of the table via aData[0]
+							var evalDate = parseDateValue(aData[2]);
+							if (evalDate >= dateStart && evalDate <= dateEnd) {
+								return true;
+							} else {
+								return false;
+							}
+						});
+
+						function parseDateValue(rawDate) {
+							var dateArray = rawDate.split("-");
+							var parsedDate = dateArray[0] + dateArray[1] + dateArray[2];
+							return parsedDate;
+						}
+
+						var reportDataTableFinal = $("#reportTable").DataTable({
+							dom: "Bfrtip",
+							buttons: ["copyHtml5", "excelHtml5", "csvHtml5", "pdfHtml5"],
+							bStateSave: false
+						});
+
+						$(".datepicker").datepicker({
+							dateFormat: "yy-mm-dd",
+							showOn: "button",
+							buttonImage:
+								"https://raw.githubusercontent.com/bcswartz/jQuery-dataTables-dateRange-demo/master/assets/images/calendar.gif",
+							buttonImageOnly: false
+						});
+
+						$("#dateStart").keyup(function() {
+							reportDataTableFinal.draw();
+						});
+						$("#dateStart").change(function() {
+							reportDataTableFinal.draw();
+						});
+						$("#dateEnd").keyup(function() {
+							eportDataTableFinal.draw();
+						});
+						$("#dateEnd").change(function() {
+							reportDataTableFinal.draw();
+						});
+						$(".loading").hide();
+					})
+					.fail(function(jqXHR, textStatus, errorThrown) {
+						console.log(jqXHR);
+						alert(jqXHR.responseJSON.msg);
+						$(".loading").hide();
+					});
+			}
+
+			function loadUserMonthlyStats() {
+				$(".loading").show();
+				$.get(
+					"https://us-central1-dcpoint.cloudfunctions.net/recordFunction/v1/record/monthlyStats",
+					{}
+				)
+					.done(function(data) {
+						console.log(data);
+
+						var list = data.recordList;
+						var tableValue = "";
+						for (var date in list) {
+							var emailsObj = list[date];
+							for (var emailArray in emailsObj) {
+								// console.log("tableValue", tableValue);
+								var arr = emailsObj[emailArray];
+								tableValue +=
+									"<tr>" +
+									"<td>" +
+									date +
+									"</td>" +
+									"<td>" +
+									arr[0] +
+									"</td>" +
+									"<td>" +
+									arr[4] +
+									"</td>" +
+									"<td>" +
+									arr[5] +
+									"</td>" +
+									"<td>" +
+									arr[7] +
+									"</td>" +
+									"<td>" +
+									arr[6] +
+									"</td>" +
+									"<td>" +
+									arr[1] +
+									"</td>" +
+									"<td>" +
+									arr[2] +
+									"</td>" +
+									"<td>" +
+									arr[3] +
+									"</td>" +
+									"<td>" +
+									arr[8] +
+									"</td>" +
+									"</tr>";
+							}
+						}
+						$("#userTable")
+							.find("tbody")
+							.append(tableValue);
+
+						$("#userTable").DataTable({
+							dom: "Bfrtip",
+							buttons: ["copyHtml5", "excelHtml5", "csvHtml5", "pdfHtml5"]
+						});
+					})
+					.fail(function(jqXHR, textStatus, errorThrown) {
+						console.log(jqXHR);
+						alert(jqXHR.responseJSON.msg);
+					});
+			}
+		</script>
+	</head>
+	<body>
+		<h1>Employee's Report</h1>
+		<div class="tabs">
+			<input type="radio" id="tab1" name="tab-control" checked />
+			<input type="radio" id="tab2" name="tab-control" />
+
+			<ul>
+				<li title="Report">
+					<label for="tab1" role="button"> <br /><span>Report</span> </label>
+				</li>
+				<li title="Users">
+					<label for="tab2" role="button"> <br /><span>Users</span> </label>
+				</li>
+			</ul>
+			<div class="slider">
+				<div class="indicator"></div>
+			</div>
+			<div class="content">
+				<section>
+					<h2>Report</h2>
+					<!-- Report Starts -->
+
+					<div id="baseDateControl">
+						<div class="dateControlBlock">
+							Between
+							<input
+								type="text"
+								name="dateStart"
+								id="dateStart"
+								class="datepicker"
+							/>
+							and
+							<input
+								type="text"
+								name="dateEnd"
+								id="dateEnd"
+								class="datepicker"
+							/>
+						</div>
+					</div>
+					<br />
+					<table id="reportTable" cellpadding="4">
+						<thead>
+							<tr>
+								<th>Date</th>
+								<th>Name</th>
+								<th>Email</th>
+								<th>Welle Number</th>
+								<th>KFZ Number</th>
+								<th>Tour Number</th>
+								<th>Scanner Number</th>
+								<th>Start Time</th>
+								<th>Break Start Time</th>
+								<th>Break End Time</th>
+								<th>End Time</th>
+								<th>Working Hour</th>
+								<th>Break Hour</th>
+								<th>Total Hour</th>
+								<th>Starting KMs</th>
+								<th>Ending KMs</th>
+								<th>Total KMs</th>
+							</tr>
+						</thead>
+						<tbody></tbody>
+					</table>
+					<!-- Report Ends -->
+				</section>
+				<section>
+					<h2>Users</h2>
+					<!-- User Start -->
+
+					<table id="userTable" cellpadding="4">
+						<thead>
+							<tr>
+								<th>Date</th>
+								<th>Name</th>
+								<th>Email</th>
+								<th>KFZ Number</th>
+								<th>Tour Number</th>
+								<th>Scanner Number</th>
+								<th>Working Hour</th>
+								<th>Break Hour</th>
+								<th>Total Hour</th>
+								<th>Total KMs</th>
+							</tr>
+						</thead>
+						<tbody></tbody>
+					</table>
+					<!-- User ends -->
+				</section>
+			</div>
+		</div>
+		<div class="loading"></div>
+	</body>
+</html>
